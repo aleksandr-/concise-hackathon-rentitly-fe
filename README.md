@@ -1,3 +1,4 @@
-# concise-hackathon-rentitly-fe
+# Run
 
-:-)
+- npm install
+- npm run dev
