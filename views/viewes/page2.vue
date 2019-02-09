@@ -8,10 +8,8 @@
 
                         <v-card class="elevation-12">
                             <v-list dense>
-                                <v-list-tile @click="">
-                                    <v-list-tile-content>
                                         <v-autocomplete
-                                                class="mr-3"
+                                                class="ml-3 mr-3"
                                                 v-model="searchItemsModel"
                                                 :items="searchItems"
                                                 color="black"
@@ -20,8 +18,16 @@
                                                 label="What to rent?"
                                                 prepend-icon="search"
                                         ></v-autocomplete>
-                                    </v-list-tile-content>
-                                </v-list-tile>
+                                    <v-autocomplete
+                                            class="ml-3 mr-3"
+                                            v-model="locationsModel"
+                                            :items="locations"
+                                            color="black"
+                                            hide-no-data
+                                            hide-selected
+                                            label="From where to rent?"
+                                            prepend-icon="location_on"
+                                    ></v-autocomplete>
                                     <v-layout column>
                                         <v-menu
                                                 class="mr-3 ml-3"
@@ -182,7 +188,42 @@
         data() {
             return {
                 searchItems: ["Abacus", "Stones","Sacks","Saddle","Safe","Starship","Statue","Steamer","Stool","Strainer", "Stroller"],
+                locations: ["Estonia: Tallinn", "Sweden: Stockholm", "Beijing: China", "Spain",
+                    "Guyana: Georgetown",
+                    "Haiti: Port-au-Prince",
+                    "Honduras: Tegucigalpa",
+                    "Hungary: Budapest",
+                    "Iceland: Reykjavik",
+                    "India: New Delhi",
+                    "Indonesia: Jakarta",
+                    "Iran: Tehran",
+                    "Iraq: Baghdad",
+                    "Ireland: Dublin",
+                    "Israel: Jerusalem*",
+                    "Italy: Rome",
+                    "East Timor (Timor-Leste): Dili",
+                    "Ecuador: Quito",
+                    "Egypt: Cairo",
+                    "El Salvador: San Salvador",
+                    "Equatorial Guinea: Malabo",
+                    "Eritrea: Asmara",
+                    "Iraq: Baghdad",
+                    "Ireland: Dublin",
+                    "Israel: Jerusalem*",
+                    "Italy: Rome",
+                    "Jamaica: Kingston",
+                    "Japan: Tokyo",
+                    "Jordan: Amman",
+                    "Kazakhstan: Astana",
+                    "Kenya: Nairobi",
+                    "Kiribati: Tarawa Atoll",
+                    "Korea, North: Pyongyang",
+                    "Korea, South: Seoul",
+                    "Kosovo: Pristina",
+                    "Kuwait: Kuwait City"
+                ],
                 picker: null,
+                locationsModel: null,
                 pickerTo: null,
                 location: null,
                 searchItemsModel: null,
@@ -204,7 +245,9 @@
             items() {
                 var data = this.$store.getters.getData;
                 data = _.filter(data, item => item.rating >= parseInt(this.ratingFilter));
-
+                if (this.locationsModel) {
+                    data = _.filter(data, item => item.location.toLowerCase().includes(this.locationsModel.toLowerCase().substring(1, 5)) )
+                }
                 if(this.filterPrice1){
                     data = _.filter(data, item => item.price >= 0 && item.price < 20);
                 }

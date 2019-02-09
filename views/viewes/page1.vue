@@ -110,7 +110,7 @@
             date: null,
             dateTo: null,
             items: ["Abacus", "Stones","Sacks","Saddle","Safe","Starship","Statue","Steamer","Stool","Strainer", "Stroller"],
-            locations: ["Estonia: Tallinn", "Sweden: Stockholm", "Beijing: China",
+            locations: ["Estonia: Tallinn", "Sweden: Stockholm", "Beijing: China", "Spain",
     "Guyana: Georgetown",
     "Haiti: Port-au-Prince",
     "Honduras: Tegucigalpa",
