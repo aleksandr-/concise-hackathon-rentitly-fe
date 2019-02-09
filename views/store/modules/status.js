@@ -7,6 +7,8 @@ const state = {
     status: {},
     date: null,
     toDate: null,
+    itemName: null,
+    locationName: null
 };
 
 const mutations = {

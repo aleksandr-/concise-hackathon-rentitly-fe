@@ -123,7 +123,7 @@
                         </v-card>
                     </v-layout>
 
-                    <v-flex xs12>
+                    <v-flex xs12 style="margin-left: 10px;">
 
                         <v-card>
                             <v-container
@@ -134,7 +134,7 @@
 
                                     <template v-for="(item, index) in items">
                                         <v-flex xs12>
-                                            <v-card style="padding-top: 20px;padding-left: 20px;" @click="">
+                                            <v-card style="padding-top: 20px;padding-left: 20px;" :to="{ name: 'page3', params: {id: item.id}}" @click="">
                                                 <v-layout>
                                                     <v-flex xs3>
                                                         <v-img
