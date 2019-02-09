@@ -32,18 +32,24 @@
     computed: {
       date() {
         let date = this.$store.getters.getDate;
-        if (date) {return date}
+        if (date) {
+          return date
+        }
+        return "2018-05-10"
 
-        return new Date()
       },
       dateTo() {
         let date = this.$store.getters.getToDate;
-        if (date) {return date}
-        return new Date()
+        if (date) {
+          return date
+        }
+          return "2018-05-11"
       },
       item() {
-        this.$store.dispatch('loadSearchResults')
-        return this.$store.getters.getById(100);
+        if (this.$store.getters.getData.length === 0) {
+          this.$store.dispatch('loadSearchResults')
+        }
+        return this.$store.getters.getById(parseInt(this.$route.params.id));
       },
     },
   }
