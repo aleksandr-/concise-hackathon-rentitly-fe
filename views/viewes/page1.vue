@@ -45,7 +45,7 @@
                                             readonly
                                     ></v-text-field>
                                     <v-date-picker v-model="date" @input="picker = false"
-                                                   :landscape="true"></v-date-picker>
+                                                   ></v-date-picker>
                                 </v-menu>
                                 <v-menu
                                         v-model="pickerTo"
@@ -64,8 +64,7 @@
                                             prepend-icon="event"
                                             readonly
                                     ></v-text-field>
-                                    <v-date-picker v-model="dateTo" @input="pickerTo = false"
-                                                   :landscape="true"></v-date-picker>
+                                    <v-date-picker v-model="dateTo" @input="pickerTo = false"></v-date-picker>
                                 </v-menu>
 
                             </v-layout>
@@ -176,7 +175,15 @@
                 return calculatePrice(this.actualAreaLimit)
             }
         },
+        watch: {
+            dateTo: function (date) {
+                this.$store.dispatch('setDate', date)
+            },
+            date: function (date) {
+                this.$store.dispatch('setToDate', date)
 
+            }
+        },
         methods: {}
     };
 </script>

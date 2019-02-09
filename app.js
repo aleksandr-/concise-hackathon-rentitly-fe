@@ -32,32 +32,7 @@ app.use('/robots.txt', express.static(path.join(__dirname, 'dist/static/robots.t
 app.use(expressStaticGzip(path.join(__dirname, 'dist')));
 
 
-app.use((err, req, res, next) => {
-    if (!err) {
-        return next();
-    }
-    let response = {
-        success: false,
-        error: err.message
-    };
 
-    if (err.code) {
-        response.errorCode = err.code;
-    }
-
-    if (err && err.details) {
-        err.details.forEach(detail => {
-            if (!response.details || !response.details[detail.path]) {
-                if (!response.details) {
-                    response.details = {};
-                }
-                response.details[detail.path] = detail.message;
-            }
-        });
-    }
-    res.status(err.status || 400);
-    res.json(response);
-});
 
 module.exports = app;
 

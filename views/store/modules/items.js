@@ -1,22 +1,22 @@
 import {http} from "../../config/http.js"
 
+const _ = require('lodash');
+
 const state = {
-    data: []
+    data: [],
 };
 
 const mutations = {
-    DATA(state, items) {
-        state.data = items
+    DATA(state, data) {
+        state.data = data
     }
 };
 
 const actions = {
     loadSearchResults({commit, state}) {
-        console.log("loading");
         return http().get('/items')
             .then(r => r.data)
             .then(response => {
-                console.log("loading");
                 commit('DATA', response)
             })
     },
@@ -25,6 +25,9 @@ const actions = {
 const getters = {
     getData: state => {
         return state.data
+    },
+    getById: (state, getters) => id => {
+        return _.find(state.data, data => data.id === id)
     }
 };
 
