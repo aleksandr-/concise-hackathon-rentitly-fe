@@ -105,49 +105,15 @@
                                 </v-list-tile>
                             </v-list>
 
-                            <v-list dense>
                                 <v-subheader>RATING</v-subheader>
-                                <v-list-tile @click="">
-                                    <v-list-tile-action>
-                                        <v-checkbox></v-checkbox>
-                                    </v-list-tile-action>
-                                    <v-list-tile-content>
-                                        <h3 class="title font-weight-light display-2"> >= 1 star</h3>
-                                    </v-list-tile-content>
-                                </v-list-tile>
-                                <v-list-tile @click="">
-                                    <v-list-tile-action>
-                                        <v-checkbox></v-checkbox>
-                                    </v-list-tile-action>
-                                    <v-list-tile-content>
-                                        <h3 class="title font-weight-light display-2"> >= 2 star</h3>
-                                    </v-list-tile-content>
-                                </v-list-tile>
-                                <v-list-tile @click="">
-                                    <v-list-tile-action>
-                                        <v-checkbox></v-checkbox>
-                                    </v-list-tile-action>
-                                    <v-list-tile-content>
-                                        <h3 class="title font-weight-light display-2"> >= 3 star</h3>
-                                    </v-list-tile-content>
-                                </v-list-tile>
-                                <v-list-tile @click="">
-                                    <v-list-tile-action>
-                                        <v-checkbox></v-checkbox>
-                                    </v-list-tile-action>
-                                    <v-list-tile-content>
-                                        <h3 class="title font-weight-light display-2"> >= 4 star</h3>
-                                    </v-list-tile-content>
-                                </v-list-tile>
-                                <v-list-tile @click="">
-                                    <v-list-tile-action>
-                                        <v-checkbox></v-checkbox>
-                                    </v-list-tile-action>
-                                    <v-list-tile-content>
-                                        <h3 class="title font-weight-light display-2"> 5 star</h3>
-                                    </v-list-tile-content>
-                                </v-list-tile>
-                            </v-list>
+                                <v-radio-group v-model="ratingFilter" column style="margin-top:-5px; margin-left:15px">
+                                    <v-radio label=" >= 1 star" value="1"></v-radio>
+                                    <v-radio label=" >= 2 star" value="2"></v-radio>
+                                    <v-radio label=" >= 3 star" value="3"></v-radio>
+                                    <v-radio label=" >= 4 star" value="4"></v-radio>
+                                    <v-radio label=" = 5 star" value="5"></v-radio>
+                                    <v-radio label=" all" value="0"></v-radio>
+                                </v-radio-group>
 
                         </v-card>
                     </v-layout>
@@ -230,18 +196,15 @@
                 filterPrice3 : false,
                 filterPrice4 : false,
 
-                filterRating1 : false,
-                filterRating2 : false,
-                filterRating3 : false,
-                filterRating4 : false,
+                ratingFilter : "0",
             }
         },
 
         computed: {
             items() {
-
                 var data = this.$store.getters.getData;
-
+                data = _.filter(data, item => item.rating >= parseInt(this.ratingFilter))
+                return data;
             },
             date() {
                 return this.$store.getters.getDate
