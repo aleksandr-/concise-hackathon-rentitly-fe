@@ -63,13 +63,13 @@
         </v-layout>
       </v-layout>
     </v-layout>
+
       <v-layout row  pa-5>
         <v-layout column xs6>
-
             <v-select
                     :items="items"
                     box
-                    label="Box style"
+                    label="Card type"
                     style="margin-right: 20px"
             ></v-select>
 
@@ -84,6 +84,34 @@
         </v-layout>
       </v-layout>
     </v-layout>
+
+      <v-layout row  pa-5>
+        <v-layout column xs6>
+          <v-layout row>
+            <v-text-field
+                    v-model="first"
+                    label="Expiry date"
+                    box
+                    style="margin-right: 20px"
+            ></v-text-field>
+
+
+            <v-layout row>
+              <v-text-field
+                      v-model="first"
+                      label="CCV"
+                      box
+              ></v-text-field>
+            </v-layout>
+          </v-layout>
+
+        </v-layout>
+      </v-layout>
+
+      <v-layout row  pa-5 >
+      <v-btn color="primary" >ORDER NOW</v-btn>
+      </v-layout>
+
     </v-card>
   </v-flex>
 </template>
@@ -91,6 +119,7 @@
 
   export default {
     data: () => ({
+      items:["MasterCard", "Visa", "AmericanExpress"]
     }),
     computed: {
       date() {
