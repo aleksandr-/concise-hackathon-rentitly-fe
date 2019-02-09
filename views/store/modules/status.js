@@ -24,6 +24,12 @@ const mutations = {
     },
     SET_TO_DATE(state, date) {
         state.toDate = date
+    },
+    SET_ITEM_NAME(state, val) {
+        state.itemName = val
+    },
+    SET_LOCATION_NAME(state, val) {
+        state.locationName = val
     }
 };
 
@@ -33,6 +39,12 @@ const actions = {
     },
     setToDate({commit}, date) {
         commit('SET_TO_DATE', date)
+    },
+    setItemName({commit}, name) {
+        commit('SET_ITEM_NAME', name)
+    },
+    setLocationName({commit}, name) {
+        commit('SET_LOCATION_NAME', name)
     },
     setSystemMessage({commit}, message) {
         commit('SET_SYSTEM_MESSAGE', message);
@@ -65,6 +77,12 @@ const getters = {
     },
     getToDate: state => {
         return state.toDate;
+    },
+    getItemName: state => {
+        return state.itemName;
+    },
+    getLocationName: state => {
+        return state.locationName;
     },
     getCurrentFullYear: state => {
         if (state.status.currentDate) {

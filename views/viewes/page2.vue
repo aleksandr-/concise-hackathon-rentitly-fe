@@ -8,19 +8,19 @@
 
                         <v-card class="elevation-12">
                             <v-list dense>
-                                        <v-autocomplete
+                                    <v-autocomplete
                                                 class="ml-3 mr-3"
-                                                v-model="searchItemsModel"
+                                                v-model="itemName"
                                                 :items="searchItems"
                                                 color="black"
                                                 hide-no-data
                                                 hide-selected
                                                 label="What to rent?"
                                                 prepend-icon="search"
-                                        ></v-autocomplete>
+                                    ></v-autocomplete>
                                     <v-autocomplete
                                             class="ml-3 mr-3"
-                                            v-model="locationsModel"
+                                            v-model="locationName"
                                             :items="locations"
                                             color="black"
                                             hide-no-data
@@ -113,12 +113,11 @@
 
                                 <v-subheader>RATING</v-subheader>
                                 <v-radio-group v-model="ratingFilter" column style="margin-top:-5px; margin-left:15px">
-                                    <v-radio label=" >= 1 star" value="1"></v-radio>
-                                    <v-radio label=" >= 2 star" value="2"></v-radio>
-                                    <v-radio label=" >= 3 star" value="3"></v-radio>
-                                    <v-radio label=" >= 4 star" value="4"></v-radio>
                                     <v-radio label=" = 5 star" value="5"></v-radio>
-                                    <v-radio label=" all" value="0"></v-radio>
+                                    <v-radio label=" >= 4 star" value="4"></v-radio>
+                                    <v-radio label=" >= 3 star" value="3"></v-radio>
+                                    <v-radio label=" >= 2 star" value="2"></v-radio>
+                                    <v-radio label=" >= 1 star" value="1"></v-radio>
                                 </v-radio-group>
 
                         </v-card>
@@ -135,7 +134,7 @@
 
                                     <template v-for="(item, index) in items">
                                         <v-flex xs12>
-                                            <v-card style="padding-top: 20px;padding-left: 20px;" :to="{ name: 'page3', params: {id: item.id}}" @click="">
+                                            <v-card style="padding-top: 20px;padding-left: 20px;" @click="">
                                                 <v-layout>
                                                     <v-flex xs3>
                                                         <v-img
@@ -223,10 +222,7 @@
                     "Kuwait: Kuwait City"
                 ],
                 picker: null,
-                locationsModel: null,
                 pickerTo: null,
-                location: null,
-                searchItemsModel: null,
 
                 filterItem: null,
                 filterDateFrom: null,
@@ -243,11 +239,22 @@
 
         computed: {
             items() {
+
+                console.log('itemName', this.itemName)
+                console.log('locationName', this.locationName)
+
+
                 var data = this.$store.getters.getData;
                 data = _.filter(data, item => item.rating >= parseInt(this.ratingFilter));
-                if (this.locationsModel) {
-                    data = _.filter(data, item => item.location.toLowerCase().includes(this.locationsModel.toLowerCase().substring(1, 5)) )
+
+                if (this.itemName) {
+                    data = _.filter(data, item => item.name.toLowerCase().includes(this.itemName.toLowerCase()) )
                 }
+
+                if (this.locationName) {
+                    data = _.filter(data, item => item.location.toLowerCase().includes(this.locationName.toLowerCase().substring(1, 5)) )
+                }
+
                 if(this.filterPrice1){
                     data = _.filter(data, item => item.price >= 0 && item.price < 10);
                 }
@@ -272,6 +279,12 @@
             dateTo() {
                 return this.$store.getters.getToDate
             },
+            itemName() {
+                return this.$store.getters.getItemName
+            },
+            locationName() {
+                return this.$store.getters.getLocationName
+            }
         },
 
         created() {

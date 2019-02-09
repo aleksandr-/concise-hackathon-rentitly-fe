@@ -14,7 +14,7 @@
                             <v-layout row align-center justify-center style="color: rgb(66, 66, 66)">
                                 <v-autocomplete
                                         class="mr-3"
-                                        v-model="model"
+                                        v-model="itemName"
                                         :items="items"
                                         color="black"
                                         hide-no-data
@@ -67,7 +67,7 @@
                             <v-layout row align-center justify-center style="color: rgb(66, 66, 66)">
                                 <v-autocomplete
                                         class="mr-3"
-                                        v-model="model"
+                                        v-model="locationName"
                                         :items="locations"
                                         color="black"
                                         hide-no-data
@@ -106,6 +106,7 @@
             date: null,
             dateTo: null,
             items: ["Abacus", "Stones","Sacks","Saddle","Safe","Starship","Statue","Steamer","Stool","Strainer", "Stroller"],
+            itemName: null,
             locations: ["Estonia: Tallinn", "Sweden: Stockholm", "Beijing: China", "Spain",
     "Guyana: Georgetown",
     "Haiti: Port-au-Prince",
@@ -140,6 +141,7 @@
     "Kosovo: Pristina",
     "Kuwait: Kuwait City"
             ],
+            locationName: null,
             model: null,
             picker: null,
             pickerTo: null,
@@ -174,6 +176,14 @@
             },
             date: function (date) {
                 this.$store.dispatch('setDate', date)
+
+            },
+            itemName: function (date) {
+                this.$store.dispatch('setItemName', date)
+
+            },
+            locationName: function (date) {
+                this.$store.dispatch('setLocationName', date)
 
             }
         },

@@ -2,7 +2,7 @@
   <v-app id="inspire" style="height:100vh">
     <v-content>
       <v-toolbar color="#FFFFFF" fixed app height="60px">
-        <v-toolbar-title><div class="text-xs-center" style="font-weight: 100; font-size: 32px; margin-left: 20px;">
+        <v-toolbar-title><div class="text-xs-center" style="font-weight: 100; font-size: 32px; margin-left: 20px;" :to="{ name: 'page1'}">
           rentitly
           <span style="position:absolute; top:25px; margin-left:10px; font-size:12px">Like buying, but better</span>
         </div>
