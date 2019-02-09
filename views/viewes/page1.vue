@@ -48,7 +48,6 @@
                                                    :landscape="true"></v-date-picker>
                                 </v-menu>
                                 <v-menu
-                                        class="mr-3"
                                         v-model="pickerTo"
                                         :close-on-content-click="false"
                                         :nudge-right="40"

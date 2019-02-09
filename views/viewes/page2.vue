@@ -90,35 +90,16 @@
     export default {
         data() {
             return {
-                items: [
-
-                    {
-                        id: 1,
-                        name: 'Name 1',
-                        rating: 5,
-                        location: 'Italy',
-                        price: 23.0
-                    },
-
-                    {
-                        id: 2,
-                        name: 'Name 2',
-                        rating: 4,
-                        location: 'Italy',
-                        price: 123.0
-                    },
-
-                    {
-                        id: 3,
-                        name: 'Name 3',
-                        rating: 5,
-                        location: 'Italy',
-                        price: 78.50
-                    },
-
-
-                ]
             }
+        },
+        computed: {
+            items() {
+                return this.$store.getters.getData;
+            },
+        },
+        created () {
+            this.$store.dispatch('loadSearchResults');
+            this.$store.dispatch('setSystemMessage', {text: "Midagi head juhtus!"});
         }
     }
 

@@ -12,6 +12,7 @@
   </v-app>
 </template>
 
+<script>
 
     export default {
         data: () => ({
@@ -57,7 +58,7 @@
                 })
             },
         },
-        beforeCreate () {
+        created () {
             //this.$store.dispatch('loadSomeInitialData');
         },
     }

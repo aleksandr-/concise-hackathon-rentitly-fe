@@ -31,7 +31,7 @@ const actions = {
         clearTimeout(systemMessageTimeout);
         systemMessageTimeout = setTimeout(() => {
             commit('CLEAR_SYSTEM_MESSAGE')
-        }, 4000);
+        }, 400000);
     },
     loadStatus({commit}, message) {
         http().get('/status')
@@ -43,9 +43,7 @@ const actions = {
 };
 
 const getters = {
-    isDemoMode: state => {
-        return state.demoMode
-    },
+
     getSystemMessageText: state => {
         if (!!state.systemMessage) {
             return state.systemMessage.text;
