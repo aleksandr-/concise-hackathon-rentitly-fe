@@ -12,7 +12,7 @@ import VuetifyConfirm from 'vuetify-confirm'
 Vue.use(VueYouTubeEmbed, {global: false});
 Vue.use(Vuetify, {
     theme: {
-        primary: '#286DA8',
+        primary: '#895f4e',
         secondary: '#2485bf',
         chips: '#2c88a8',
         secondaryButton: '#34a3c7',

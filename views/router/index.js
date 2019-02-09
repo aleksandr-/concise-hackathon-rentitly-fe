@@ -16,13 +16,14 @@ const router = new Router({
         [
             {
                 path: '/',
+                name: 'page1',
+                component: page1,
+            },
+            {
+                path: '/',
                 component: Rentitly,
                 children: [
-                    {
-                        path: '/1',
-                        name: 'page1',
-                        component: page1,
-                    },
+
                     {
                         path: '/2',
                         name: 'page2',
