@@ -10,18 +10,21 @@
                             <v-list dense>
                                 <v-list-tile @click="">
                                     <v-list-tile-content>
-                                        <v-text-field
-                                                v-model="date"
+                                        <v-autocomplete
+                                                class="mr-3"
+                                                v-model="model"
+                                                :items="items"
+                                                color="black"
+                                                hide-no-data
+                                                hide-selected
                                                 label="What to rent?"
                                                 prepend-icon="search"
-                                                readonly
-                                        ></v-text-field>
+                                        ></v-autocomplete>
                                     </v-list-tile-content>
                                 </v-list-tile>
-                                <v-list-tile @click="">
-                                    <v-list-tile-content>
+                                    <v-layout column>
                                         <v-menu
-                                                class="mr-3"
+                                                class="mr-3 ml-3"
                                                 v-model="picker"
                                                 :close-on-content-click="false"
                                                 :nudge-right="40"
@@ -38,17 +41,14 @@
                                                     prepend-icon="event"
                                                     readonly
                                             ></v-text-field>
-                                            <v-date-picker v-model="date" @input="picker = false"></v-date-picker>
+                                            <v-date-picker v-model="date" @input="picker = false"
+                                                           :landscape="true"></v-date-picker>
                                         </v-menu>
-                                    </v-list-tile-content>
-                                </v-list-tile>
-                                <v-list-tile @click="">
-                                    <v-list-tile-content>
                                         <v-menu
-                                                class="mr-3"
-                                                v-model="picker"
+                                                v-model="pickerTo"
                                                 :close-on-content-click="false"
                                                 :nudge-right="40"
+                                                class="mr-3 ml-3"
                                                 lazy
                                                 transition="scale-transition"
                                                 offset-y
@@ -57,31 +57,18 @@
                                         >
                                             <v-text-field
                                                     slot="activator"
-                                                    v-model="date"
-                                                    label="... until"
+                                                    v-model="dateTo"
+                                                    label="To"
                                                     prepend-icon="event"
                                                     readonly
                                             ></v-text-field>
-                                            <v-date-picker v-model="date" @input="picker = false"
-                                            ></v-date-picker>
+                                            <v-date-picker v-model="dateTo" @input="pickerTo = false"
+                                                           :landscape="true"></v-date-picker>
                                         </v-menu>
-                                    </v-list-tile-content>
-                                </v-list-tile>
-                                <v-list-tile @click="">
-                                    <v-list-tile-content>
-                                            <v-text-field
-                                                    v-model="date"
-                                                    label="Location"
-                                                    prepend-icon="location_on"
-                                                    readonly
-                                            ></v-text-field>
-                                    </v-list-tile-content>
-                                </v-list-tile>
+                                    </v-layout>
+
                             </v-list>
 
-                        </v-card>
-
-                        <v-card class="elevation-12">
                             <v-list dense>
                                 <v-subheader>PRICE</v-subheader>
                                 <v-list-tile @click="">
@@ -176,16 +163,16 @@
 
                                     <template v-for="(item, index) in items">
                                         <v-flex xs12>
-                                            <v-card color="cyan darken-2" style="padding-top: 30px;" class="white--text" :to="{ name: 'page3', params: {id: item.id}}" @click="">
+                                            <v-card style="padding-top: 20px;padding-left: 20px;" :to="{ name: 'page3', params: {id: item.id}}" @click="">
                                                 <v-layout>
-                                                    <v-flex xs5>
+                                                    <v-flex xs2>
                                                         <v-img
                                                                 :src="item.imageurl"
-                                                                height="125px"
+                                                                width="125px"
                                                                 contain
                                                         ></v-img>
                                                     </v-flex>
-                                                    <v-flex xs7>
+                                                    <v-flex xs10>
                                                         <v-card-title primary-title>
                                                             <div>
                                                                 <div class="headline">{{item.name}}</div>
@@ -248,6 +235,12 @@
         computed: {
             items() {
                 return this.$store.getters.getData;
+            },
+            date() {
+                return this.$store.getters.getDate
+            },
+            dateTo() {
+                return this.$store.getters.getToDate
             },
         },
 
