@@ -13,7 +13,7 @@
                                         <v-autocomplete
                                                 class="mr-3"
                                                 v-model="model"
-                                                :items="items"
+                                                :items="searchItems"
                                                 color="black"
                                                 hide-no-data
                                                 hide-selected
@@ -215,7 +215,7 @@
     export default {
         data() {
             return {
-                items: ["Abacus", "Stones","Sacks","Saddle","Safe","Starship","Statue","Steamer","Stool","Strainer", "Stroller"],
+                searchItems: ["Abacus", "Stones","Sacks","Saddle","Safe","Starship","Statue","Steamer","Stool","Strainer", "Stroller"],
                 date: null,
                 picker: null,
                 pickerTo: null,
