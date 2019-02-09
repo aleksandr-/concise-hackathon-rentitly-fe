@@ -279,24 +279,29 @@
             dateTo() {
                 return this.$store.getters.getToDate
             },
-            itemName() {
-                return this.$store.getters.getItemName
+            itemName : {
+                get : function (){
+                    return this.$store.getters.getItemName
+                },
+                set : function (newVal){
+                    this.$store.dispatch('setItemName', newVal)
+                }
             },
-            locationName() {
-                return this.$store.getters.getLocationName
+            locationName : {
+                get : function (){
+                    return this.$store.getters.getLocationName;
+                },
+                set : function (newVal){
+                    this.$store.dispatch('setLocationName', newVal);
+                }
             }
         },
 
         created() {
             this.$store.dispatch('loadSearchResults');
-
         },
 
-        methods : {
-            refresh () {
-                this.$store.dispatch('loadSearchResultsFilterSort', { filter : {location : 'loc' }, sort : {asc : 'ss'}});
-            }
-        }
+
     }
 
 
