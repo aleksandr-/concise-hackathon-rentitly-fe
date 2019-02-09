@@ -80,7 +80,7 @@
                                  :landscape="true"></v-date-picker>
                 </v-menu>
 
-                <v-text-field v-model="count" type="number" label="Number" append-outer-icon="add" @click:append-outer="" prepend-icon="remove" @click:prepend=""></v-text-field>
+                <v-text-field v-model="count" type="number" label="Amount to rent" append-outer-icon="add" @click:append-outer="" prepend-icon="remove" @click:prepend=""></v-text-field>
 
                 <h2>Rent also:</h2>
                 <div v-for="(rec, index) in item.recommendations">

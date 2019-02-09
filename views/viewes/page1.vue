@@ -174,10 +174,10 @@
         },
         watch: {
             dateTo: function (date) {
-                this.$store.dispatch('setDate', date)
+                this.$store.dispatch('setToDate', date)
             },
             date: function (date) {
-                this.$store.dispatch('setToDate', date)
+                this.$store.dispatch('setDate', date)
 
             }
         },
