@@ -5,8 +5,8 @@ import page1 from '../viewes/page1.vue'
 import page2 from '../viewes/page2.vue'
 import page3 from '../viewes/page3.vue'
 import page4 from '../viewes/page4.vue'
+import page5 from '../viewes/page5.vue'
 import Rentitly from '../Rentitly'
-import store from '../store/store'
 
 Vue.use(Router);
 
@@ -38,6 +38,11 @@ const router = new Router({
                         path: '/4/:id',
                         name: 'page4',
                         component: page4,
+                    },
+                    {
+                        path: '/5',
+                        name: 'page5',
+                        component: page5,
                     }
                 ]
             }

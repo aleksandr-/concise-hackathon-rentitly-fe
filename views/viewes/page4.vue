@@ -3,14 +3,13 @@
     <v-card class="elevation-2">
     <v-layout row xs12 pa-5>
       <v-layout column>
-        <v-icon large="true" color="green" left="true" style="justify-content: left;font-size: 126px;">done</v-icon>
         <h2>Your booking details</h2>
-        <h3>Pickup date</h3>
+        <h3 style="font-weight:100">Pickup date</h3>
         <h3>{{date}}</h3>
-        <h3>Return date</h3>
+        <h3 style="font-weight:100">Return date</h3>
         <h3>{{dateTo}}</h3>
-        <h3>Price: {{item.price}}</h3>
-        <h3>(for 1 day)</h3>
+        <h3 style="font-weight:100">Price: </h3>
+        <h3>{{item.price}}€ (for 1 day)</h3>
         </v-layout>
       <v-layout column>
 
@@ -65,16 +64,17 @@
       </v-layout>
     </v-layout>
 
-      <v-layout row  px-5>
+      <v-layout row px-5>
         <v-layout column xs6>
             <v-select
                     :items="items"
                     box
                     label="Card type"
-                    style="margin-right: 12px"
             ></v-select>
 
         </v-layout>
+      </v-layout>
+      <v-layout row px-5>
       <v-layout column xs6>
         <v-layout row>
           <v-text-field
@@ -110,7 +110,9 @@
       </v-layout>
 
       <v-layout row  pa-5 style="display: flex; flex-direction: row-reverse" >
-      <v-btn color="secondary" >Checkout</v-btn>
+        <router-link :to="{ name: 'page5'}" :style="{textDecoration:'none'}">
+          <v-btn color="primary">Checkout</v-btn>
+        </router-link>
       </v-layout>
 
     </v-card>
