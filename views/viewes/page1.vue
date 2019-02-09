@@ -19,10 +19,10 @@
                 >
                   <img src="/static/img/logow.png" width="300" srcset="/static/img/logow2x.png 2x"
                        style="margin-left:-20px;" alt="">
-                  <div class="subheading mb-3 text-xs-center">RENTITLY</div>
+                  <div color="white" class="title mb-3 text-xs-center">rentitly</div>
 
-                  <router-link :to="{ name: 'login'}" :style="{textDecoration:'none'}">
-                    <v-btn color="white" large>
+                  <router-link :to="{ name: 'page2'}" :style="{textDecoration:'none'}">
+                    <v-btn color="primary" large>
                       SEARCH
                     </v-btn>
                   </router-link>
@@ -32,10 +32,6 @@
             </v-layout>
           </v-carousel-item>
         </v-carousel>
-                <!--src="https://c8.alamy.com/comp/EBN6XR/green-grain-field-in-spring-germany-EBN6XR.jpg"-->
-                <!--https://kriscarr.com/wp-content/uploads/2015/04/4gluten.jpg-->
-
-
 
 </template>
 
