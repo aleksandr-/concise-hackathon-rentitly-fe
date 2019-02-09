@@ -160,7 +160,7 @@
                                     <template v-for="(item, index) in items">
 
                                         <v-flex xs12>
-                                            <v-card color="cyan darken-2" class="white--text">
+                                            <v-card color="cyan darken-2" class="white--text" :to="{ name: 'page3', params: {id: item.id}}" @click="">
                                                 <v-layout>
                                                     <v-flex xs5>
                                                         <v-img

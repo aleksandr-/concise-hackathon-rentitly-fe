@@ -73,7 +73,7 @@
                 </v-menu>
 
                 <h2>Dates:</h2>
-                <v-text-field v-model="foo" type="number" label="Number" append-outer-icon="add" @click:append-outer="increment" prepend-icon="remove" @click:prepend="decrement"></v-text-field>
+                <v-text-field v-model="count" type="number" label="Number" append-outer-icon="add" @click:append-outer="" prepend-icon="remove" @click:prepend=""></v-text-field>
 
                 <h2>Dates:</h2>
                 <v-btn color="primary">RESERVE NOW</v-btn>
@@ -96,18 +96,17 @@
         data: () => ({
             email: '',
             password: '',
-            date: null,
-            dateTo: null,
             model: null,
+            count: 1,
             picker: null,
             pickerTo: null,
         }),
         computed: {
             date() {
-                return this.$store.getters.getDate()
+                return this.$store.getters.getDate
             },
             dateTo() {
-                return this.$store.getters.getToDate()
+                return this.$store.getters.getToDate
             },
             item() {
                 this.$store.dispatch('loadSearchResults')
