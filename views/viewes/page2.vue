@@ -165,14 +165,14 @@
                                         <v-flex xs12>
                                             <v-card style="padding-top: 20px;padding-left: 20px;" :to="{ name: 'page3', params: {id: item.id}}" @click="">
                                                 <v-layout>
-                                                    <v-flex xs2>
+                                                    <v-flex xs3>
                                                         <v-img
                                                                 :src="item.imageurl"
                                                                 width="125px"
                                                                 contain
                                                         ></v-img>
                                                     </v-flex>
-                                                    <v-flex xs10>
+                                                    <v-flex xs9>
                                                         <v-card-title primary-title>
                                                             <div>
                                                                 <div class="headline">{{item.name}}</div>
