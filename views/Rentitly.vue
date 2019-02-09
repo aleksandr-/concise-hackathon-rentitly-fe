@@ -14,7 +14,33 @@
         </v-layout>
       </v-container>
     </v-content>
+    <v-footer dark height="auto"  width="100%" syle="margin-top:130px"
+    >
+      <v-card
+              flat
+              tile
+              style="width:100%; margin-top:70px"
+              class="grey darken-4 white--text text-xs-center"
+      >
+        <v-card-text>
+          <v-btn
+                  v-for="icon in icons"
+                  :key="icon"
+                  class="mx-3 white--text"
+                  icon
+          >
+            <v-icon size="24px">{{ icon }}</v-icon>
+          </v-btn>
+        </v-card-text>
 
+
+        <v-divider></v-divider>
+
+        <v-card-text class="white--text">
+          &copy;2019 — <strong>rentitly</strong>
+        </v-card-text>
+      </v-card>
+    </v-footer>
 
   </v-app>
 </template>
@@ -33,6 +59,13 @@
             items: [
                 { icon: 'ballot', text: 'Haldus', routeName: 'management'},
                 { icon: 'account_circle', text: 'Konto', routeName: 'account'},
+            ],
+            icons: [
+                'fab fa-facebook',
+                'fab fa-twitter',
+                'fab fa-google-plus',
+                'fab fa-linkedin',
+                'fab fa-instagram'
             ]
         }),
         props: {

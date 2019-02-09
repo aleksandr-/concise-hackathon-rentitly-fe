@@ -8,9 +8,11 @@ import './stylus/main.styl'
 import store from './store/store'
 import VueYouTubeEmbed from 'vue-youtube-embed'
 import VuetifyConfirm from 'vuetify-confirm'
+import '@fortawesome/fontawesome-free/css/all.css'
 
 Vue.use(VueYouTubeEmbed, {global: false});
 Vue.use(Vuetify, {
+    iconfont: 'fa',
     theme: {
         primary: '#895f4e',
         secondary: '#2485bf',

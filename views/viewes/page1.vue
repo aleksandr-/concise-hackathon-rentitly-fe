@@ -26,7 +26,7 @@
                             </v-layout>
                             <v-layout row align-center xs12 justify-center style="color: rgb(66, 66, 66)">
 
-                                <v-menu
+                                <v-menu style="width:50%"
                                         class="mr-3"
                                         v-model="picker"
                                         :close-on-content-click="false"
@@ -34,8 +34,6 @@
                                         lazy
                                         transition="scale-transition"
                                         offset-y
-                                        full-width
-                                        min-width="290px"
                                 >
                                     <v-text-field
                                             slot="activator"
@@ -47,15 +45,13 @@
                                     <v-date-picker v-model="date" @input="picker = false"
                                                    ></v-date-picker>
                                 </v-menu>
-                                <v-menu
+                                <v-menu style="width:50%"
                                         v-model="pickerTo"
+                                        class="pr-3"
                                         :close-on-content-click="false"
-                                        :nudge-right="40"
                                         lazy
                                         transition="scale-transition"
                                         offset-y
-                                        full-width
-                                        min-width="290px"
                                 >
                                     <v-text-field
                                             slot="activator"

@@ -3,7 +3,8 @@
     <v-card class="elevation-2">
     <v-layout row xs12 pa-5>
       <v-layout column>
-        <h2><v-icon large="true" color="green" left="true">done</v-icon>Your booking details</h2>
+        <v-icon large="true" color="green" left="true" style="justify-content: left;font-size: 126px;">done</v-icon>
+        <h2>Your booking details</h2>
         <h3>Pickup date</h3>
         <h3>{{date}}</h3>
         <h3>Return date</h3>

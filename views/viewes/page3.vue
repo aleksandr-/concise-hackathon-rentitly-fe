@@ -10,7 +10,7 @@
                   <img :src="item.imageurl" alt="" style="height:300px">
                 </div>
                 <h2>Name:</h2>
-                <span style="font-size:24px; font-weight: 100">
+                <span style="font-size:28px; font-weight: 400">
                   {{item.name}}
                 </span>
                 <h2>Description:</h2>
