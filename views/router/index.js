@@ -10,17 +10,6 @@ import store from '../store/store'
 
 Vue.use(Router);
 
-const ifNotAuthenticated = async (to, from, next) => {
-    await store.dispatch('loadUser').then(() => {
-        if (!store.getters.isAuthenticated) {
-            next();
-        } else {
-            next('/lisa')
-        }
-    });
-};
-
-
 const router = new Router({
     root: '/',
     routes:
