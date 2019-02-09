@@ -35,7 +35,7 @@ const router = new Router({
                         component: page3,
                     },
                     {
-                        path: '/4',
+                        path: '/4/:id',
                         name: 'page4',
                         component: page4,
                     }

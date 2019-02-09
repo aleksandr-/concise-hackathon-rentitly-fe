@@ -1,8 +1,12 @@
 <template>
   <v-app id="inspire" style="height:100vh">
-    <v-content class="bgimg-1">
-      <v-toolbar color="#8f94ad" fixed app height="100px">
-        <v-toolbar-title><div class="front-page-title text-xs-center">rentitly</div></v-toolbar-title>
+    <v-content>
+      <v-toolbar color="#FFFFFF" fixed app height="60px">
+        <v-toolbar-title><div class="text-xs-center" style="font-weight: 100; font-size: 32px; margin-left: 20px;">
+          rentitly
+          <span style="position:absolute; top:25px; margin-left:10px; font-size:12px">Like buying, but better</span>
+        </div>
+        </v-toolbar-title>
       </v-toolbar>
       <v-container fluid :class="{'ma-0': $vuetify.breakpoint.smAndDown, 'pa-1': $vuetify.breakpoint.smAndDown }">
         <v-layout justify-center>

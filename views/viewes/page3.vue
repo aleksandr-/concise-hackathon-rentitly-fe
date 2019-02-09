@@ -20,6 +20,11 @@
             </v-flex>
             <v-flex xs4>
               <v-layout column>
+                <h2>Total price:</h2>
+                <strong style="font-size:24px">
+                  {{item.price}} €
+                </strong>
+
                 <h2>Rating:</h2>
                 <v-rating
                         v-model="item.rating"
@@ -27,6 +32,9 @@
                         color="green"
                         large
                 ></v-rating>
+
+                <h2>Location:</h2>
+                {{item.location}}
 
                 <h2>Dates:</h2>
 
@@ -72,16 +80,41 @@
                                  :landscape="true"></v-date-picker>
                 </v-menu>
 
-                <h2>Dates:</h2>
                 <v-text-field v-model="count" type="number" label="Number" append-outer-icon="add" @click:append-outer="" prepend-icon="remove" @click:prepend=""></v-text-field>
 
-                <h2>Dates:</h2>
-                <v-btn color="primary">RESERVE NOW</v-btn>
+                <h2>Rent also:</h2>
+                <div v-for="(rec, index) in item.recommendations">
+                  <v-layout row style="margin-top:20px">
+                    <v-flex style="width:70px" xs3>
+                      <img :src="rec.imageurl" alt="" style="max-width:70px" width="70">
+                    </v-flex>
+                    <v-flex xs9>
+                      <v-layout column style="margin-left:20px;">
+
+
+                      <strong>{{rec.name}} - <v-icon>star</v-icon>{{rec.rating}}</strong>
+                      <span>Price: {{rec.price}}€</span>
+                      <span>
+                        <v-checkbox color="primary" v-model="checkbox[index]" :label="`Rent also`"></v-checkbox>
+                      </span>
+                      </v-layout>
+
+                    </v-flex>
+
+                    <v-flex>
+
+                    </v-flex>
+                  </v-layout>
+
+                </div>
+
+
+                <router-link :to="{ name: 'page4', params: {id: item.id}}" :style="{textDecoration:'none'}">
+                  <v-btn color="primary">ORDER NOW</v-btn>
+                </router-link>
               </v-layout>
             </v-flex>
           </v-layout>
-
-          {{item}}
         </v-card>
       </v-flex>
     </v-layout>
@@ -100,6 +133,7 @@
             count: 1,
             picker: null,
             pickerTo: null,
+            checkbox: [],
         }),
         computed: {
             date() {
@@ -109,7 +143,9 @@
                 return this.$store.getters.getToDate
             },
             item() {
-                this.$store.dispatch('loadSearchResults')
+                if (this.$store.getters.getData.length === 0) {
+                    this.$store.dispatch('loadSearchResults')
+                }
                 return this.$store.getters.getById(parseInt(this.$route.params.id));
             },
         },

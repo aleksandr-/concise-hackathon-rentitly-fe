@@ -171,9 +171,6 @@
                     }
                 }
             },
-            calculatedPrice() {
-                return calculatePrice(this.actualAreaLimit)
-            }
         },
         watch: {
             dateTo: function (date) {
