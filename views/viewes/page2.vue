@@ -3,65 +3,82 @@
     <v-container fluid fill-height>
 
         <v-layout column wrap align-space-between justify-space-between row fill-height>
-
-            <v-flex xs12 sm8 md4>
-
-                <v-card class="elevation-12">
-                    <v-card-text>
-                        <v-form>
-                            <v-layout row>
-                                <v-text-field id="text" prepend-icon="search" name="query" label="Text" type="text"></v-text-field>
-                                <v-text-field id="category" prepend-icon="list" name="category" label="Category" type="text"></v-text-field>
-                                <v-text-field id="location" prepend-icon="location-on" name="location" label="Location" type="text"></v-text-field>
-                            </v-layout>
-                        </v-form>
-                    </v-card-text>
-                    <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-btn color="primary">Search</v-btn>
-                    </v-card-actions>
-                </v-card>
-            </v-flex>
-
                 <v-layout row align-left justify-left>
-
                     <v-layout column align-center justify-center>
 
                         <v-card class="elevation-12">
                             <v-list dense>
                                 <v-list-tile @click="">
-                                    <v-list-tile-action>
-                                        <v-icon>search</v-icon>
-                                    </v-list-tile-action>
                                     <v-list-tile-content>
-                                        <v-text-field id="text" name="query" label="Search" type="text"></v-text-field>
+                                        <v-text-field
+                                                v-model="date"
+                                                label="What to rent?"
+                                                prepend-icon="search"
+                                                readonly
+                                        ></v-text-field>
                                     </v-list-tile-content>
                                 </v-list-tile>
                                 <v-list-tile @click="">
-                                    <v-list-tile-action>
-                                        <v-icon>event</v-icon>
-                                    </v-list-tile-action>
                                     <v-list-tile-content>
-                                        <v-text-field id="text" name="from" label="Starting from" type="text"></v-text-field>
+                                        <v-menu
+                                                class="mr-3"
+                                                v-model="picker"
+                                                :close-on-content-click="false"
+                                                :nudge-right="40"
+                                                lazy
+                                                transition="scale-transition"
+                                                offset-y
+                                                full-width
+                                                min-width="290px"
+                                        >
+                                            <v-text-field
+                                                    slot="activator"
+                                                    v-model="date"
+                                                    label="From"
+                                                    prepend-icon="event"
+                                                    readonly
+                                            ></v-text-field>
+                                            <v-date-picker v-model="date" @input="picker = false"></v-date-picker>
+                                        </v-menu>
                                     </v-list-tile-content>
                                 </v-list-tile>
                                 <v-list-tile @click="">
-                                    <v-list-tile-action>
-                                        <v-icon>event</v-icon>
-                                    </v-list-tile-action>
                                     <v-list-tile-content>
-                                        <v-text-field id="text" name="until" label="Until" type="text"></v-text-field>
+                                        <v-menu
+                                                class="mr-3"
+                                                v-model="picker"
+                                                :close-on-content-click="false"
+                                                :nudge-right="40"
+                                                lazy
+                                                transition="scale-transition"
+                                                offset-y
+                                                full-width
+                                                min-width="290px"
+                                        >
+                                            <v-text-field
+                                                    slot="activator"
+                                                    v-model="date"
+                                                    label="... until"
+                                                    prepend-icon="event"
+                                                    readonly
+                                            ></v-text-field>
+                                            <v-date-picker v-model="date" @input="picker = false"
+                                            ></v-date-picker>
+                                        </v-menu>
                                     </v-list-tile-content>
                                 </v-list-tile>
                                 <v-list-tile @click="">
-                                    <v-list-tile-action>
-                                        <v-icon>location-on</v-icon>
-                                    </v-list-tile-action>
                                     <v-list-tile-content>
-                                        <v-text-field id="text" name="location" label="Location" type="text"></v-text-field>
+                                            <v-text-field
+                                                    v-model="date"
+                                                    label="Location"
+                                                    prepend-icon="location_on"
+                                                    readonly
+                                            ></v-text-field>
                                     </v-list-tile-content>
                                 </v-list-tile>
                             </v-list>
+
                         </v-card>
 
                         <v-card class="elevation-12">
@@ -69,7 +86,7 @@
                                 <v-subheader>PRICE</v-subheader>
                                 <v-list-tile @click="">
                                     <v-list-tile-action>
-                                        <v-checkbox v-model="selected"></v-checkbox>
+                                        <v-checkbox v-model="filterPrice1"></v-checkbox>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
                                         <h3 class="title font-weight-light display-2">€ 0 - 20</h3>
@@ -77,7 +94,7 @@
                                 </v-list-tile>
                                 <v-list-tile @click="">
                                     <v-list-tile-action>
-                                        <v-checkbox v-model="selected"></v-checkbox>
+                                        <v-checkbox v-model="filterPrice2"></v-checkbox>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
                                         <h3 class="title font-weight-light display-2">€ 20 - 40</h3>
@@ -85,7 +102,7 @@
                                 </v-list-tile>
                                 <v-list-tile @click="">
                                     <v-list-tile-action>
-                                        <v-checkbox v-model="selected"></v-checkbox>
+                                        <v-checkbox v-model="filterPrice3"></v-checkbox>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
                                         <h3 class="title font-weight-light display-2">€ 40 - 60</h3>
@@ -93,7 +110,7 @@
                                 </v-list-tile>
                                 <v-list-tile @click="">
                                     <v-list-tile-action>
-                                        <v-checkbox v-model="selected"></v-checkbox>
+                                        <v-checkbox v-model="filterPrice4"></v-checkbox>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
                                         <h3 class="title font-weight-light display-2">€ 60+</h3>
@@ -105,7 +122,7 @@
                                 <v-subheader>RATING</v-subheader>
                                 <v-list-tile @click="">
                                     <v-list-tile-action>
-                                        <v-checkbox v-model="selected"></v-checkbox>
+                                        <v-checkbox></v-checkbox>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
                                         <h3 class="title font-weight-light display-2"> >= 1 star</h3>
@@ -113,7 +130,7 @@
                                 </v-list-tile>
                                 <v-list-tile @click="">
                                     <v-list-tile-action>
-                                        <v-checkbox v-model="selected"></v-checkbox>
+                                        <v-checkbox></v-checkbox>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
                                         <h3 class="title font-weight-light display-2"> >= 2 star</h3>
@@ -121,7 +138,7 @@
                                 </v-list-tile>
                                 <v-list-tile @click="">
                                     <v-list-tile-action>
-                                        <v-checkbox v-model="selected"></v-checkbox>
+                                        <v-checkbox></v-checkbox>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
                                         <h3 class="title font-weight-light display-2"> >= 3 star</h3>
@@ -129,7 +146,7 @@
                                 </v-list-tile>
                                 <v-list-tile @click="">
                                     <v-list-tile-action>
-                                        <v-checkbox v-model="selected"></v-checkbox>
+                                        <v-checkbox></v-checkbox>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
                                         <h3 class="title font-weight-light display-2"> >= 4 star</h3>
@@ -137,7 +154,7 @@
                                 </v-list-tile>
                                 <v-list-tile @click="">
                                     <v-list-tile-action>
-                                        <v-checkbox v-model="selected"></v-checkbox>
+                                        <v-checkbox></v-checkbox>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
                                         <h3 class="title font-weight-light display-2"> 5 star</h3>
@@ -158,13 +175,12 @@
                                 <v-layout column wrap>
 
                                     <template v-for="(item, index) in items">
-
                                         <v-flex xs12>
-                                            <v-card color="cyan darken-2" class="white--text" :to="{ name: 'page3', params: {id: item.id}}" @click="">
+                                            <v-card color="cyan darken-2" style="padding-top: 30px;" class="white--text" :to="{ name: 'page3', params: {id: item.id}}" @click="">
                                                 <v-layout>
                                                     <v-flex xs5>
                                                         <v-img
-                                                                src="https://cdn.vuetifyjs.com/images/cards/foster.jpg"
+                                                                :src="item.imageurl"
                                                                 height="125px"
                                                                 contain
                                                         ></v-img>
@@ -182,15 +198,12 @@
                                                 <v-divider light></v-divider>
                                                 <v-card-actions class="pa-3">
                                                     <v-spacer></v-spacer>
-
-                                                    <template v-for="(star, index) in [1,2,3,4,5]">
-                                                        <v-icon v-if="item.rating < star">
-                                                            star_border
-                                                        </v-icon>
-                                                        <v-icon v-else>
-                                                            star
-                                                        </v-icon>
-                                                    </template>
+                                                    <v-rating
+                                                            v-model="item.rating"
+                                                            background-color="green lighten-3"
+                                                            color="green"
+                                                            large
+                                                    ></v-rating>
                                                 </v-card-actions>
                                             </v-card>
                                         </v-flex>
@@ -205,13 +218,7 @@
 
 
         </v-layout>
-
-
-
-
     </v-container>
-
-
 </template>
 
 
@@ -220,16 +227,33 @@
 
     export default {
         data() {
-            return {}
+            return {
+                date: null,
+                picker: null,
+                pickerTo: null,
+                location: null,
+
+                filterPrice1 : false,
+                filterPrice2 : false,
+                filterPrice3 : false,
+                filterPrice4 : false,
+
+                filterRating1 : false,
+                filterRating2 : false,
+                filterRating3 : false,
+                filterRating4 : false,
+            }
         },
+
         computed: {
             items() {
                 return this.$store.getters.getData;
             },
         },
+
         created() {
             this.$store.dispatch('loadSearchResults');
-            //this.$store.dispatch('setSystemMessage', {text: "Midagi head juhtus!"});
+
         }
     }
 
