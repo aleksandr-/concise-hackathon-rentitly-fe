@@ -215,6 +215,7 @@
     export default {
         data() {
             return {
+                items: ["Abacus", "Stones","Sacks","Saddle","Safe","Starship","Statue","Steamer","Stool","Strainer", "Stroller"],
                 date: null,
                 picker: null,
                 pickerTo: null,
