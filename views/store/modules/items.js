@@ -39,9 +39,11 @@ const mutations = {
 
 const actions = {
     loadSearchResults({commit, state}) {
-        return http().get('/loadSomeData')
+        console.log("loading");
+        return http().get('/items')
             .then(r => r.data)
             .then(response => {
+                console.log("loading");
                 commit('DATA', response)
             })
     },
