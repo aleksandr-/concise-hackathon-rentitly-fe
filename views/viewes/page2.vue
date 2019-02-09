@@ -4,7 +4,7 @@
 
         <v-layout column wrap align-space-between justify-space-between row fill-height>
                 <v-layout row align-left justify-left>
-                    <v-layout column align-center justify-center>
+                    <v-layout column>
 
                         <v-card class="elevation-12">
                             <v-list dense>
@@ -165,7 +165,7 @@
                         </v-card>
                     </v-layout>
 
-                    <v-flex xs12 sm8 md4 style="margin-top: 25px;">
+                    <v-flex xs12>
 
                         <v-card>
                             <v-container
