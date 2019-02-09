@@ -12,7 +12,7 @@
                                     <v-list-tile-content>
                                         <v-autocomplete
                                                 class="mr-3"
-                                                v-model="model"
+                                                v-model="searchItemsModel"
                                                 :items="searchItems"
                                                 color="black"
                                                 hide-no-data
@@ -216,10 +216,10 @@
         data() {
             return {
                 searchItems: ["Abacus", "Stones","Sacks","Saddle","Safe","Starship","Statue","Steamer","Stool","Strainer", "Stroller"],
-                date: null,
                 picker: null,
                 pickerTo: null,
                 location: null,
+                searchItemsModel: null,
 
                 filterPrice1 : false,
                 filterPrice2 : false,
