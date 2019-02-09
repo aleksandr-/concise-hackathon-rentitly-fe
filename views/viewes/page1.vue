@@ -25,7 +25,7 @@
               >
               <img src="/static/img/logow.png" width="300" srcset="/static/img/logow2x.png 2x"
                    style="margin-left:-20px;" alt="">
-              <div class="subheading mb-3 text-xs-center">LASD</div>
+              <div class="subheading mb-3 text-xs-center">RENTITLY</div>
 
               <router-link :to="{ name: 'login'}" :style="{textDecoration:'none'}">
                 <v-btn color="white" large>
