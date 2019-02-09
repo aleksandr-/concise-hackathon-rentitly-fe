@@ -31,15 +31,8 @@ const actions = {
         clearTimeout(systemMessageTimeout);
         systemMessageTimeout = setTimeout(() => {
             commit('CLEAR_SYSTEM_MESSAGE')
-        }, 400000);
+        }, 4000);
     },
-    loadStatus({commit}, message) {
-        http().get('/status')
-            .then(r => r.data.data)
-            .then(status => {
-                commit('SET_STATUS', status)
-            })
-    }
 };
 
 const getters = {
@@ -64,28 +57,6 @@ const getters = {
             return (new Date(state.status.currentDate)).getFullYear();
         }
         return null;
-    },
-    getTrialUntil: (state, getters) => {
-        if (getters.user && getters.user.status && getters.user.status.trialUntil) {
-            return getters.user.status.trialUntil;
-        }
-        return "";
-    },
-    accountStatus: (state, getters) => {
-        let user = getters.user;
-        let status = state.status;
-        if (user && status) {
-            if (user.status.trialUntil > status.currentDate) {
-                return "TRIAL"
-            }
-            if (getters.getPaidArea < getters.getRequestedArea) {
-                return "PROCESSING";
-            }
-            if (Math.max(getters.getRequestedArea, getters.getPaidArea) < getters.getActiveFieldArea) {
-                return "NEEDS_CONFIRMATION";
-            }
-            return "ACTIVE";
-        }
     },
 };
 
