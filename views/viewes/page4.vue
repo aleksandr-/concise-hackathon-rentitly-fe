@@ -22,8 +22,8 @@
         </v-layout>
         </v-layout>
     </v-layout>
-    <v-layout row  pa-5>
-      <v-layout column xs6 m>
+    <v-layout row  px-5>
+      <v-layout column xs6>
         <v-layout row>
           <v-text-field
                   v-model="first"
@@ -43,7 +43,7 @@
         </v-layout>
       </v-layout>
     </v-layout>
-    <v-layout row  pa-5>
+    <v-layout row px-5>
         <v-layout column xs6>
           <v-layout row>
             <v-text-field
@@ -65,7 +65,7 @@
       </v-layout>
     </v-layout>
 
-      <v-layout row  pa-5>
+      <v-layout row  px-5>
         <v-layout column xs6>
             <v-select
                     :items="items"
@@ -86,7 +86,7 @@
       </v-layout>
     </v-layout>
 
-      <v-layout row  pa-5>
+      <v-layout row  px-5>
         <v-layout column xs6>
           <v-layout row>
             <v-text-field
