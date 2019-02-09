@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app id="inspire" style="height:100vh">
     <v-content>
       <v-container fluid :class="{'ma-0': $vuetify.breakpoint.smAndDown, 'pa-1': $vuetify.breakpoint.smAndDown }">
         <v-layout justify-center>
@@ -8,18 +8,10 @@
       </v-container>
     </v-content>
 
-    <v-snackbar v-model="messageBar" top :timeout="0">
-      <span>
-        <v-icon color="white" left>{{messageBarIcon}}</v-icon>
-        {{ messageBarText }}
-      </span>
-    </v-snackbar>
-
 
   </v-app>
 </template>
 
-<script>
 
     export default {
         data: () => ({
