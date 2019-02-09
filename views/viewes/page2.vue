@@ -82,7 +82,7 @@
                                         <v-checkbox v-model="filterPrice1"></v-checkbox>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
-                                        <h3 class="title font-weight-light display-2">€ 0 - 20</h3>
+                                        <h3 class="title font-weight-light display-2">€ 0 - 10</h3>
                                     </v-list-tile-content>
                                 </v-list-tile>
                                 <v-list-tile @click="">
@@ -90,7 +90,7 @@
                                         <v-checkbox v-model="filterPrice2"></v-checkbox>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
-                                        <h3 class="title font-weight-light display-2">€ 20 - 40</h3>
+                                        <h3 class="title font-weight-light display-2">€ 10 - 20</h3>
                                     </v-list-tile-content>
                                 </v-list-tile>
                                 <v-list-tile @click="">
@@ -98,7 +98,7 @@
                                         <v-checkbox v-model="filterPrice3"></v-checkbox>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
-                                        <h3 class="title font-weight-light display-2">€ 40 - 60</h3>
+                                        <h3 class="title font-weight-light display-2">€ 20 - 30</h3>
                                     </v-list-tile-content>
                                 </v-list-tile>
                                 <v-list-tile @click="">
@@ -106,7 +106,7 @@
                                         <v-checkbox v-model="filterPrice4"></v-checkbox>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
-                                        <h3 class="title font-weight-light display-2">€ 60+</h3>
+                                        <h3 class="title font-weight-light display-2">€ 30+</h3>
                                     </v-list-tile-content>
                                 </v-list-tile>
                             </v-list>
@@ -249,19 +249,19 @@
                     data = _.filter(data, item => item.location.toLowerCase().includes(this.locationsModel.toLowerCase().substring(1, 5)) )
                 }
                 if(this.filterPrice1){
-                    data = _.filter(data, item => item.price >= 0 && item.price < 20);
+                    data = _.filter(data, item => item.price >= 0 && item.price < 10);
                 }
 
                 if(this.filterPrice2){
-                    data = _.filter(data, item => item.price >= 20 && item.price < 40);
+                    data = _.filter(data, item => item.price >= 10 && item.price < 20);
                 }
 
                 if(this.filterPrice3){
-                    data = _.filter(data, item => item.price >= 40 && item.price < 60);
+                    data = _.filter(data, item => item.price >= 20 && item.price < 30);
                 }
 
                 if(this.filterPrice4){
-                    data = _.filter(data, item => item.price >= 60);
+                    data = _.filter(data, item => item.price >= 30);
                 }
 
                 return data;
