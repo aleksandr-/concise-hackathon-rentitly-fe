@@ -2,7 +2,7 @@
 
     <v-container fluid fill-height>
 
-        <v-layout column wrap align-space-between justify-space-between row fill-height>
+        <v-layout column wrap align-space-between row fill-height>
                 <v-layout row align-left justify-left>
                     <v-layout column>
 
@@ -221,6 +221,10 @@
                 location: null,
                 searchItemsModel: null,
 
+                filterItem: null,
+                filterDateFrom: null,
+                filterDateTo: null,
+
                 filterPrice1 : false,
                 filterPrice2 : false,
                 filterPrice3 : false,
@@ -235,7 +239,9 @@
 
         computed: {
             items() {
-                return this.$store.getters.getData;
+
+                var data = this.$store.getters.getData;
+
             },
             date() {
                 return this.$store.getters.getDate
@@ -248,6 +254,12 @@
         created() {
             this.$store.dispatch('loadSearchResults');
 
+        },
+
+        methods : {
+            refresh () {
+                this.$store.dispatch('loadSearchResultsFilterSort', { filter : {location : 'loc' }, sort : {asc : 'ss'}});
+            }
         }
     }
 

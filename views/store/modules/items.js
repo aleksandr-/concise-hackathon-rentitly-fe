@@ -20,6 +20,17 @@ const actions = {
                 commit('DATA', response)
             })
     },
+
+    loadSearchResultsFilterSort({commit, state, filter, sort}) {
+        console.log('>>> filter', filter);
+        console.log('>>> sort', sort);
+
+        return http().get('/items')
+            .then(r => r.data)
+            .then(response => {
+                commit('DATA', response)
+            })
+    },
 };
 
 const getters = {
