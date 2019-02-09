@@ -71,7 +71,7 @@
                     :items="items"
                     box
                     label="Card type"
-                    style="margin-right: 20px"
+                    style="margin-right: 12px"
             ></v-select>
 
         </v-layout>
@@ -109,8 +109,8 @@
         </v-layout>
       </v-layout>
 
-      <v-layout row  pa-5 >
-      <v-btn color="primary" >ORDER NOW</v-btn>
+      <v-layout row  pa-5 style="display: flex; flex-direction: row-reverse" >
+      <v-btn color="secondary" >Checkout</v-btn>
       </v-layout>
 
     </v-card>
