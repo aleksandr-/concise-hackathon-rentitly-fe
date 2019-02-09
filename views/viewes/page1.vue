@@ -61,7 +61,7 @@
                                     <v-text-field
                                             slot="activator"
                                             v-model="dateTo"
-                                            label="Until"
+                                            label="...until"
                                             prepend-icon="event"
                                             readonly
                                     ></v-text-field>
@@ -74,7 +74,7 @@
                                 <v-autocomplete
                                         class="mr-3"
                                         v-model="model"
-                                        :items="items"
+                                        :items="locations"
                                         color="black"
                                         hide-no-data
                                         hide-selected
@@ -111,7 +111,41 @@
             password: '',
             date: null,
             dateTo: null,
-            items: ["Stones", "Stroller"],
+            items: ["Abacus", "Stones","Sacks","Saddle","Safe","Starship","Statue","Steamer","Stool","Strainer", "Stroller"],
+            locations: ["Estonia: Tallinn", "Sweden: Stockholm", "Beijing: China",
+    "Guyana: Georgetown",
+    "Haiti: Port-au-Prince",
+    "Honduras: Tegucigalpa",
+    "Hungary: Budapest",
+    "Iceland: Reykjavik",
+    "India: New Delhi",
+    "Indonesia: Jakarta",
+    "Iran: Tehran",
+    "Iraq: Baghdad",
+    "Ireland: Dublin",
+    "Israel: Jerusalem*",
+    "Italy: Rome",
+    "East Timor (Timor-Leste): Dili",
+    "Ecuador: Quito",
+    "Egypt: Cairo",
+    "El Salvador: San Salvador",
+    "Equatorial Guinea: Malabo",
+    "Eritrea: Asmara",
+    "Iraq: Baghdad",
+    "Ireland: Dublin",
+    "Israel: Jerusalem*",
+    "Italy: Rome",
+    "Jamaica: Kingston",
+    "Japan: Tokyo",
+    "Jordan: Amman",
+    "Kazakhstan: Astana",
+    "Kenya: Nairobi",
+    "Kiribati: Tarawa Atoll",
+    "Korea, North: Pyongyang",
+    "Korea, South: Seoul",
+    "Kosovo: Pristina",
+    "Kuwait: Kuwait City"
+            ],
             model: null,
             picker: null,
             pickerTo: null,
