@@ -203,7 +203,24 @@
         computed: {
             items() {
                 var data = this.$store.getters.getData;
-                data = _.filter(data, item => item.rating >= parseInt(this.ratingFilter))
+                data = _.filter(data, item => item.rating >= parseInt(this.ratingFilter));
+
+                if(this.filterPrice1){
+                    data = _.filter(data, item => item.price >= 0 && item.price < 20);
+                }
+
+                if(this.filterPrice2){
+                    data = _.filter(data, item => item.price >= 20 && item.price < 40);
+                }
+
+                if(this.filterPrice3){
+                    data = _.filter(data, item => item.price >= 40 && item.price < 60);
+                }
+
+                if(this.filterPrice4){
+                    data = _.filter(data, item => item.price >= 60);
+                }
+
                 return data;
             },
             date() {
